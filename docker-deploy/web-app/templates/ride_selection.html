@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>My Open or Confirmed Rides</h1>
+    <h1 style="font-size: small"><i>displaying rides created as an owner</i></h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Status</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Arrival Time</th>
+            <th scope="col">Passengers in Party</th>
+            <th scope="col">Requested Vehicle Type</th>
+            <th scope="col">Shareable</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ride in open_or_confirmed_rides %}
+            <tr>
+                <td>{{ride.status}}</td>
+                <td>{{ride.destination}}</td>
+                <td>{{ride.arrival_time}}</td>
+                <td>{{ride.passengers_requested}}</td>
+                <td>{{ride.vehicle_type_requested}}</td>
+                <td>{{ride.shareable}}</td>
+                {% if ride.status == "open" %}
+                    <td><a href="/rides/edit/{{ride.id}}" class="btn btn-sm btn-primary">Edit</a></td>
+                {% endif %}
+                {% if ride.status == "confirmed" %}
+                    <td><a href="/rides/detail/{{ride.id}}" class="btn btn-sm btn-primary">Details</a></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div style="text-align: center">
+        <a href="/rides/rider/new/" class="btn btn-lg btn-primary">Request a New Ride</a>
+    </div>
+    <br>
+{% endblock %}

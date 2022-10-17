@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Search Results</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Status</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Arrival Time</th>
+            <th scope="col">Current Number of Passengers</th>
+            <th scope="col">Shareable</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for matching_ride in matching_rides %}
+            <tr>
+                <td>{{ matching_ride.status }}</td>
+                <td>{{ matching_ride.destination }}</td>
+                <td>{{ matching_ride.arrival_time }}</td>
+                <td>{{ matching_ride.passengers_requested }}</td>
+                <td>{{ matching_ride.shareable }}</td>
+                <td><a href="/rides/sharer/join/{{ matching_ride.id }}" class="btn btn-sm btn-primary">Join</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div style="text-align: center; margin-bottom: 10px">
+        <a href="/rides/sharer/search/" class="btn btn-lg btn-primary">Search For New Ride</a>
+    </div>
+
+    <div style="text-align: center; margin-top: 10px">
+        <a href="/rides/sharer/view/" class="btn btn-lg btn-primary">Back To My Rides</a>
+    </div>
+{% endblock %}

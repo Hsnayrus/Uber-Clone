@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Open Ride Requests</h1>
+    <h1 style="font-size: small"><i>displaying rides compatible with your registration info </i></h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Status</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Arrival Time</th>
+            <th scope="col">Shareable</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ride in rides %}
+            <tr>
+                <td>{{ride.status}}</td>
+                <td>{{ride.destination}}</td>
+                <td>{{ride.arrival_time}}</td>
+                <td>{{ride.shareable}}</td>
+                {% if ride.status == "open" %}
+                    <td><a href="/rides/driver/confirm/{{ride.id}}" class="btn btn-sm btn-primary">Confirm</a></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h1>Driver Registration Info</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Available Passenger Seats</th>
+            <th scope="col">License Plate Number</th>
+            <th scope="col">Vehicle Model</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for my_driver in my_drivers %}
+            <tr>
+                <td>{{ my_driver.passenger_seats_in_car }}</td>
+                <td>{{ my_driver.license_plate_num }}</td>
+                <td>{{ my_driver.vehicle_model }}</td>
+                <td><a href="/users/edit/driver/{{ my_driver.user.id }}" class="btn btn-sm btn-primary">Edit</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="text-align: center">
+        <a href="/rides/driver/view/" class="btn btn-lg btn-primary">Go Back</a>
+    </div>
+{% endblock %}

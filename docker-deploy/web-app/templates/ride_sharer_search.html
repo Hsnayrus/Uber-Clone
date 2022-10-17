@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="/rides/sharer/search/" method="post"> {% csrf_token %}
+        <div class="form-group">
+            <label for="destination">Destination</label>
+            <input type="text" name="destination" id="destination" size="45">
+        </div>
+        <div class="form-group">
+            <label for="passengers_in_party">Passengers in Party</label>
+            <input type="number" name="passengers_in_party" id="passengers_in_party">
+        </div>
+        <div class="form-group">
+            <label for="arrival_time_start">Arrival Time Start</label>
+            <input type="time" name="arrival_time_start" id="arrival_time_start">
+        </div>
+        <div class="form-group">
+            <label for="arrival_time_end">Arrival Time End</label>
+            <input type="time" name="arrival_time_end" id="arrival_time_end">
+        </div>
+        <input type="submit" value="Search" class="btn btn-primary">
+    </form>
+{% endblock %}

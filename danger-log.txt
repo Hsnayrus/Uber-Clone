@@ -1,0 +1,31 @@
+Danger Log
+
+    - When the user logs in as a driver, requests a ride and then logs out. Logging in again but not as a driver would result in an error. A potential situation that should be handled.
+
+    - Suppose we have a feature that cancels all the open rides while logging out. If they are mid-trip and they log out, it could result in a complex situation the driver remains unpaid.
+
+    - Forgotten password is a feature that is crucial to implement.
+
+    - Malicious inputs in the register form, such as SQL injection queries.
+
+    - Rides should be available based on how many drivers are currently logged in and are finding rides.
+
+    - A realistic arrival time should be provided. Else it can cause to drivers losing money over trivial reasons
+
+    - Make sure that the website can handle more than one user logged in and using it at once
+
+    - Handle a case where there are more than 1 ride sharers on a single ride
+
+    - If the number of passengers on a ride will exceed the maximum capacity of a driver's car if a ride sharer joins, do not allow them to join
+
+    - What happens if user inputs negative amount of passengers in request?
+
+    - What happens if user inputs empty fields into our forms?
+
+    - What happens if user preemptively presses the "enter" key on the request new ride form? We have to make sure that all fields are marked required so that
+    we don't end up with a database query error when trying to edit the ride.
+
+    - Pressing the "back" button while navigating the web app should lead to a form resubmission when the user is logged in. Else they can make malicious requests
+
+    - A system should be implemented in order to do more background checks on the drivers. It's a very dangerous situation and the entire system of adding vehicle details
+    and such should be regulated.

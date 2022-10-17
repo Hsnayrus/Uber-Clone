@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="/rides/edit/{{ ride_id }}"  method="post"> {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Save Changes" class="btn btn-primary" />
+    </form>
+{% endblock %}

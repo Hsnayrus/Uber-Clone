@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Request A New Ride</h1>
+    <form action="/submit/"  method="post"> {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <input type="submit" value="Submit Request" class="btn btn-primary" />
+    </form>
+    <div style="text-align: center">
+        <a href="/rides/rider/view" class="btn btn-lg btn-primary">Return to My Rides</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base_not_signed_in.html" %}
+{% load crispy_forms_filters %}
+{% block content %}
+    {% load crispy_forms_tags %}
+    <div class="container py-5">
+        <h1>Login</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ login_form|crispy }}
+            <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+        <p class="text-center">Don't have an account? <a href="/users/register">Create an account</a>.</p>
+    </div>
+{% endblock %}

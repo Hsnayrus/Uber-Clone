@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Confirmed Ride and Driver Details</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Status</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Passengers in Party</th>
+            <th scope="col">Arrival Time</th>
+            <th scope="col">Shareable</th>
+            <th scope="col">Driver's License Plate Number</th>
+            <th scope="col">Driver's Vehicle Type</th>
+            <th scope="col">Driver's Seat Capacity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ selected_ride.status }}</td>
+            <td>{{ selected_ride.destination }}</td>
+            <td>{{ selected_ride.passengers_requested }}</td>
+            <td>{{ selected_ride.arrival_time }}</td>
+            <td>{{ selected_ride.shareable }}</td>
+            <td>{{ selected_driver.license_plate_num }}</td>
+            <td>{{ selected_driver.vehicle_model }}</td>
+            <td>{{ selected_driver.passenger_seats_in_car }}</td>
+        </tr>
+        </tbody>
+    </table>
+    {% if request.session.user_type == "ride sharer" %}
+        <div style="text-align: center">
+            <a href="/rides/sharer/view/" class="btn btn-lg btn-primary">Back To My Rides</a>
+        </div>
+    {% endif %}
+    {% if request.session.user_type == "ride owner" %}
+        <div style="text-align: center">
+            <a href="/rides/rider/view/" class="btn btn-lg btn-primary">Back To My Rides</a>
+        </div>
+    {% endif %}
+{% endblock %}

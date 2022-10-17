@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Please Select A User Session</h1>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <a> </a>
+        <br>
+        <input type="submit" value="Continue" class="btn btn-primary" />
+    </form>
+{% endblock %}
